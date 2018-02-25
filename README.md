@@ -1,4 +1,4 @@
-  베나함 체계적인 Data science education http:// café.naver.com/dataan
+  베나함 체계적인 Data science education channel  http:// café.naver.com/dataan
 
 
 
