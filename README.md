@@ -1,4 +1,6 @@
-  베나함 체계적인 Data science education channel  http:// café.naver.com/dataan
+  체계적인 Data science education channel
+  http:// café.naver.com/dataan
+  베나함(in the Republic of Korea)
 
 
 
