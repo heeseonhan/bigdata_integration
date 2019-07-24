@@ -1,18 +1,19 @@
 
- *  Data Scientist Curriculum RoadMap
-    https://youtu.be/W1MKV7mTxuo
-    
+ *  Data Scientist Curriculum RoadMap   
+    https://youtu.be/W1MKV7mTxuo   
     
   
-  * 체계적인 Data science education channel
+  *  Data science education channel   
     http:// café.naver.com/dataan  (in the Republic of Korea)
 
-[BOOK LIST]
 
-○ Data science STEP1
+
+○ R Fundamental - Data science STEP1[BOOK LIST]
 http://pod.kyobobook.co.kr/newPODBookList/newPODBookDetailView.ink?barcode=1400000296134&orderClick=KBC
 (ebook)
 http://digital.kyobobook.co.kr/digital/ebook/ebookDetail.ink?selectedLargeCategory=001&barcode=480D180223690&orderClick=LAG&Kc=
+따라하기 code
+
 
 ○ Data science STEP2
 http://pod.kyobobook.co.kr/newPODBookList/newPODBookDetailView.ink?barcode=1400000296455&orderClick=KBC
