@@ -1,0 +1,39 @@
+﻿책소개
+데이터에서 AI 서비스로의 단계를 이해하고, 데이터에서 패턴을 발견하기 위한 시각화 결과를 보고,
+숨어 있는 키인사이트(Key insights)를 탐색할 수 있다.
+
+slide share
+https://github.com/heeseonhan/OpenAIServiceBaseOnBigData/빅데이터 에서AI서비스런칭의이해.pdf
+
+code share
+
+저자소개
+빅데이터 시각화 A-Z
+빅 데이터 분석 프로그램 입문 
+외부 및 내부 데이터 수집과 저장
+빅데이터 분석을 위한 데이터 탐색 및 가공
+예측을 위한 회귀모형 : 의학데이터
+관련 자료의 공유는 cafe.naver.com/dataan
+
+
+리뷰
+데이터가 있긴한데 무엇을 시작해야될지 고민하시는 분들께
+
+목차
+데이터의 중요성
+Big Data 출현 배경 http://cafe.naver.com/dataan/50
+Data 측정 수준 이해 http://cafe.naver.com/dataan/51
+수집 방법에 따른 Data 분류
+구조화 정도에 따른 Data 분류
+Big Data 란
+데이터에서 AI 서비스 모델 개발 단계
+빅데이터 기반  AI  서비스의 구성도 그리기
+인공지능 AI (머신러닝, 딥러닝)
+목적치 유무에 따른 분류: Target 변수에 따른 머신러닝의 분류
+지도학습(supervised learning)
+비지도학습(Unsupervised learning)
+분류분석
+의사결정나무(tree model)
+초등학교 저학년 사고에 영향을 많이 미친 변인 및 기준값
+붓꽃 분류하고 예측하기
+붓꽃을 분류하는데 가장 영향력 있는 변수 랭킹하기
