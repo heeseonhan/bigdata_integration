@@ -1,0 +1,55 @@
+ full outer join은 두 데이터 셋에 있는 값이 모두 나타나게 두 데이터 셋을 합하기한다. 아래 코드에서 CustomerID  7번 고객은 dt2(회원가입테이블)에는 있지만 dt1(상품을구매)에는 없는 고객이라고 할수 있다. 이러한 경우 고객7번은 정보를 버리기 보다는 분석데이터셋에 포함시키는 방향으로 앞으로는 분석에서 사용할 수 있는 여지를 남겨두고자 하나의 data set으로 조인하여보자
+ 
+> df1 = data.frame(CustomerId = c(1:6), Product = c(rep("Toaster", 3), rep("Radio", 3)))
+
+> df1
+  CustomerId Product
+1          1 Toaster
+2          2 Toaster
+3          3 Toaster
+4          4   Radio
+5          5   Radio
+6          6   Radio
+
+>df2 = data.frame(CustomerId = c(2L, 4L, 7L), State = c(rep("Alabama", 2), rep("Ohio", 1))) 
+
+> df2
+  CustomerId   State
+1          2 Alabama
+2          4 Alabama
+3          7    Ohio
+
+>library(data.table)
+>dt1 = as.data.table(df1)
+> dt1
+   CustomerId Product
+1:          1 Toaster
+2:          2 Toaster
+3:          3 Toaster
+4:          4   Radio
+5:          5   Radio
+6:          6   Radio
+
+>dt2 = as.data.table(df2)
+> dt2
+   CustomerId   State
+1:          2 Alabama
+2:          4 Alabama
+3:          7    Ohio
+
+
+
+#키를 설정하지 않을 때에는 dt1[dt2, on=“키컬럼”]을 해주어야 된다.
+>setkey(dt1, NULL)
+>setkey(dt2, NULL)
+
+# full outer join하기 위해, dt1과 dt2에 "CustomerId" 모두 출력한다.
+> merge(dt1, dt2, by = "CustomerId", all = TRUE)
+   CustomerId Product   State
+1:          1 Toaster      NA
+2:          2 Toaster Alabama
+3:          3 Toaster      NA
+4:          4   Radio Alabama
+5:          5   Radio      NA
+6:          6   Radio      NA
+7:          7      NA    Ohio
