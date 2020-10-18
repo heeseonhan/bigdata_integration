@@ -1,0 +1,270 @@
+---
+title: "Data Integration"
+author: "EadaAN,https://cafe.naver.com/dataan"
+date: '2020 10 15 '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r data Federation 1. 열단위로 병합}
+#1
+vX <- c(1,2,3)
+vY <- c(5,6,7)
+(xy<-cbind(vX,vY,deparse.level=0))
+(xy<-cbind(vX,vY,deparse.level=1))
+ 
+#2
+dcar<-mtcars
+dim(dcar)
+vNo <- 1:32
+vNo
+dcar$temp_No = vNo 
+dCarNO <- cbind(dcar, temp_No_no=vNo)
+dCarNO
+str(dCarNO)
+
+#3
+mx<-matrix(1:6,nrow=2))
+mx
+my<-cbind(mx,c(7,8))
+my
+
+#4
+Day=c(1:14)
+outlook=c("sunny","sunny","overcast","rainy","rainy","rainy","overcast","sunny","sunny","rainy","sunny","overcast","overcast","rainy")
+Temperature=c(85,80,83,70,68,65,64,72,69,75,75,72,81,71)
+dTable=cbind(Day, outlook, Temperature, oredrdFa, deparse.level = 1)
+dTable
+```
+
+
+```{r data Federation 2. 행단위로 병합}
+dCar <- mtcars
+dNewRecord <- data.frame(mpg=11.1, cyl=1, disp=111, hp=111
+  , drat=1.11, wt=1.111, qsec=11.11,  vs=1
+  ,  am=1, gear=1, carb=1)
+
+dCar <- rbind(dCar, dNewRecord)
+dCar
+rownames(dCar)[length(rownames(dCar))] <- "NewCar"
+tail(dCar)
+```
+
+
+```{r data Federation 3. Outer 조인 : 두 테이블}
+df_1 = data.frame(CustomerId = c(1:6), Product = c(rep("Computer", 3), rep("Radio", 3)))
+
+df_2 = data.frame(CustomerId = c(2, 4, 6), State = c(rep("Alabama", 2), rep("Ohio", 1)))
+
+merge(x = df_1, y = df_2, by = "CustomerId", all = TRUE)
+
+```
+
+
+```{r data Federation 4. full Outer 조인}
+df1 = data.frame(CustomerId = c(1:6), Product = c(rep("Toaster", 3), rep("Radio", 3)))
+df1
+df2 = data.frame(CustomerId = c(2L, 4L, 7L), State = c(rep("Alabama", 2), rep("Ohio", 1))) 
+df2
+library(data.table)
+dt1 = as.data.table(df1)
+dt1
+dt2 = as.data.table(df2)
+dt2
+setkey(dt1, NULL)
+setkey(dt2, NULL)
+merge(dt1, dt2, by = "CustomerId", all = TRUE)
+```
+
+
+
+```{r 키 값에 반복이 있는 경우, 모든 행을 Merge하는 방법, all=TRUE}
+
+```
+
+```{r Left outer 조인}
+
+```
+
+
+```{r Right outer 조인}
+
+```
+
+```{r 크로스 조인}
+
+```
+
+```{r Inner 조인}
+
+```
+
+```{r Anti 조인}
+
+```
+
+```{r 날짜를 기준으로 날씨 데이터 조인하기}
+date_all_re<-read.csv("Data Integration_data/datereproduct.csv",stringsAsFactors = T)
+precipi<-read.csv("Data Integration_data/rainfall_2010-2015.csv",skip=6)
+head(precipi$날짜,10)
+precipi$날짜2<-paste(substr(precipi$날짜,1,4),substr(precipi$날짜,6,7),substr(precipi$날짜,9,10),sep="-")
+head(precipi$날짜2,10)
+date_all_re$발생년월일2<-as.character(date_all_re$발생년월일2)
+(dMergeRight <-          merge(date_all_re,precipi, by.x="발생년월일2", by.y="날짜2", all.x=TRUE))
+```
+
+```{r}
+merge1_sel2<- read.csv("Data Integration_data/merge1vysel2.csv",header=TRUE)
+str(merge1_sel2)
+ merge1_sell<- read.csv("Data Integration_data/merge1bysell.csv",header=TRUE)
+str(merge1_sell)
+```
+
+
+```{r data Federation 5. Left outer 조인}
+
+```
+
+
+```{r data Federation 6.Right outer 조인}
+
+```
+
+
+```{r data Federation 7.크로스 조인}
+
+```
+
+
+```{r data Federation 8.Inner 조인}
+
+```
+
+
+```{r data Federation 9.Anti 조인}
+
+```
+
+
+```{r data Federation 10.날짜를 기준으로 날씨 데이터 조인하기}
+
+```
+
+
+```{r data Federation 11.영화의 순위 및 영화명 두 개 속성기준으로 조인하기}
+
+```
+
+
+```{r data Federation 12.동일성 검사 수행: 두 Object가 동일한지 확인}
+
+```
+
+
+```{r data Federation 13.데이터 통합 시 동일한 데이터가 입력 될 수 있으므로 연관관계 분석 등을 통해 중복 데이터를 검출하}
+stud<- read.csv("Data Integration_data/학과 상담내용_학생정보만.csv",stringsAsFactors =T)
+str(stud)#1039
+sum(table(stud$학번))
+uniq<-unique(stud$학번)
+length(uniq)#273
+
+#vector을 data frame object 로 변경
+uniq_1<-matrix(uniq,ncol=1)#273
+colnames(uniq_1)<-'학번'
+sum(table(uniq_1))
+uniq_df<-as.data.frame(uniq_1)
+str(uniq_df)
+str(stud)
+colnames(stud)
+
+#학번으로 merge 하면, 행이 142+897 개로 나타남
+# 학번이 유니크한 케이스만 추출을 원함
+#그래서 join[!duplicated(join$학번),] 형식으로 unique 만 추출함 
+join<-merge(uniq_df,stud,by="학번")
+dim(join)
+join_uniqu<-(join[!duplicated(join$학번),])
+```
+
+
+```{r Finding Redundant Attributes 1.모든 값이 0인 열삭제}
+
+```
+
+
+```{r Finding Redundant Attributes 2.중복된 행 식별하기}
+
+```
+
+
+```{r Finding Redundant Attributes 3. 고유한 값만 도출하기}
+
+```
+
+
+```{r Finding Redundant Attributes 4. 연속된 값의 차이 산출하기}
+
+```
+
+
+```{r Finding Redundant Attributes 5.중복이 하나라도 있는지 확인}
+
+```
+
+
+```{r Finding Redundant Attributes 6.데이터 검증 : 중복 제거}
+
+```
+
+
+```{r Finding Redundant Attributes 7.Vector object 중간 값 추가}
+
+```
+
+
+```{r Detecting Tuple Duplication and Inconsistency(Nominal) 1. categoric 변수값을 기준으로 중복된 행 식별 후 삭제하기}
+
+```
+
+
+```{r Detecting Tuple Duplication and Inconsistency(Nominal) 2.DataFrame에서 특정 변수값을 기준으로 중복된 행 식별 후 삭제하기}
+
+```
+
+
+```{r Detecting Tuple Duplication and Inconsistency(Nominal) 3.참고 : diff() 함수 1차미분과 2차미분}
+
+```
+
+
+```{r Detecting Tuple Duplication and Inconsistency(numeric data) 1. numeric data  중복된 값 위치 확인하기}
+
+```
+
+
+```{r Detecting Tuple Duplication and Inconsistency(numeric data) 2. numeric data에서 모든 변수값 동일한 행 삭제하기}
+
+```
+
+
+```{r Detecting Tuple Duplication and Inconsistency(numeric data) 3.numeric data 데이터에 대한 데이터 중복}
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
